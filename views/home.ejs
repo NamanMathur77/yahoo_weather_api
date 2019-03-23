@@ -13,13 +13,13 @@ longitudes :-<%= search["location"]["long"]%>
 <h2>Recent Observations</h2>
 
 <h3>Wind</h3>
-<%= JSON.stringify(search["current_observation"]["wind"])%>
-
+<% JSON.stringify(search["current_observation"]["wind"])%>
 <h3>Atmosphere</h3>
 <%= JSON.stringify(search["current_observation"]["atmosphere"])%>
 
 <h3>Astronomy</h3>
-<%= JSON.stringify(search["current_observation"]["astronomy"])%>
+<%= JSON.stringify(search["current_observation"]["astronomy"]); %>
 
 <h3>Forecasts</h3>
-<%= console.log(search["forecasts[0]"])%>
+<% search.forecasts.forEach(function(forecast){%>
+  <li><%=forecast.low%></li><%});%>
