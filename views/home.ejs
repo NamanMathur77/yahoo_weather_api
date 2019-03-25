@@ -41,7 +41,10 @@
     </div>
   </div>
 </div>
+<center>
 <h3>Forecasts</h3>
+</center>
 <% search["forecasts"].forEach(function(forecast){%>
-  <li><%=forecast.low%></li><%});%>
+  <div class="container border"><h3><%=forecast.day%> - <%=forecast.text%> </h3><h5>Low - <%=forecast.low%>°C</h5><h5>High - <%=forecast.high%>°C</h5><br></div><%});%>
+
 <% include partials/footer.ejs%>

@@ -26,7 +26,7 @@ app.get("/",function(req,res){
       header
   );
   request.get(
-      'https://weather-ydn-yql.media.yahoo.com/forecastrss?location='+search+'&format=json',
+      'https://weather-ydn-yql.media.yahoo.com/forecastrss?location='+search+'&u=c&format=json',
       null,
       null,
       function (err, data, result) {
