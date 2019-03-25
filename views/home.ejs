@@ -1,25 +1,47 @@
-<h1>Welcome to the weather forecaster</h1>
-<form action="/search" method="POST">
-  <input type="text" name="search" placeholder="search">
-  <button>I made new friend</button>
-</form>
-<%= search["location"]['city']%>
-<h2>Location</h2>
+<% include partials/header.ejs%>
+<div class="container">
+  <center>
+  <h1 style="font-family: 'Bangers', cursive;">Welcome to the weather forecaster</h1>
+</center>
+</div>
+<div class="container">
+  <center>
+    <form action="/search" method="POST">
+      <div class="form-row">
+        <div class="col-10">
+          <input class="form-control" type="text" name="search" placeholder="name of city">
+        </div>
+        <div class="col">
 
-country :-<%= search["location"]["country"]%><br>
-latitudes :-<%= search["location"]["lat"]%><br>
-longitudes :-<%= search["location"]["long"]%>
+          <button class="btn btn-primary">Search the city</button>
+        </div>
 
-<h2>Recent Observations</h2>
+      </div>
+    </form>
+  </center>
 
-<h3>Wind</h3>
-<% JSON.stringify(search["current_observation"]["wind"])%>
-<h3>Atmosphere</h3>
-<%= JSON.stringify(search["current_observation"]["atmosphere"])%>
+</div>
+<center>
+<h2 style="font-family: 'Sigmar One', cursive;"><%= search["location"]['city']%></h2>
+</center>
+<div class="container">
 
-<h3>Astronomy</h3>
-<%= JSON.stringify(search["current_observation"]["astronomy"]); %>
+  <div class="row">
 
+    <div class="col-md-6 border border-info">
+
+      <h2>Location</h2>
+      region :-<%=search["location"]["region"]%><br>
+      country :-<%= search["location"]["country"]%><br>
+      latitudes :-<%= search["location"]["lat"]%><br>
+      longitudes :-<%= search["location"]["long"]%><br>
+      time-zone :-<%= search["location"]["timezone_id"]%><br>
+
+
+    </div>
+  </div>
+</div>
 <h3>Forecasts</h3>
-<% search.forecasts.forEach(function(forecast){%>
+<% search["forecasts"].forEach(function(forecast){%>
   <li><%=forecast.low%></li><%});%>
+<% include partials/footer.ejs%>
